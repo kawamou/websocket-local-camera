@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+    nginx:
+      build:
+        context: ./nginx/
+      ports:
+        - 8000:80
+        - 4430:443
+      depends_on:
+        - camera
+    camera:
+        build:
+            context: ./node/
+        container_name: camera
+        ports:
+            - 8080:8080
